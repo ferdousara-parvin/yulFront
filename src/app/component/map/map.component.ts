@@ -4,7 +4,7 @@ import {Avatar} from 'src/model/avatar';
 import {ActivatedRoute} from '@angular/router';
 import {MapService} from '../../service/map.service';
 import {MapModel} from '../../../model/map';
-import { AvatarService } from 'src/app/service/avatar.service';
+import {AvatarService} from 'src/app/service/avatar.service';
 
 
 @Component({
@@ -64,48 +64,57 @@ export class MapComponent implements OnInit, OnDestroy {
       err => {
         console.error(err);
       }
-      );
+    );
   }
 
-  private moveAvators():void {
+  private moveAvators(): void {
     this.avatarService.moveListOfAvatars(this.avatarList).subscribe(
       res => {
-        console.log("moved");
+        console.log('moved');
       },
       err => {
         console.error(err);
       }
-    )
+    );
   }
 
 
   public getFireworks(): void {
-        this.avatarService.startFireworks().subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.error(err);
-        });
+    this.avatarService.startFireworks().subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.error(err);
+      });
 
-        setTimeout(() => {
-        this.avatarService.startFireworks().subscribe(
+    setTimeout(() => {
+      this.avatarService.startFireworks().subscribe(
         res => {
           console.log(res);
         },
         err => {
           console.error(err);
         });
-      }, 5000);
-        setTimeout(() => {
-        this.avatarService.startFireworks().subscribe(
+    }, 2000);
+    setTimeout(() => {
+      this.avatarService.startFireworks().subscribe(
         res => {
           console.log(res);
         },
         err => {
           console.error(err);
         });
-      }, 10000);
+    }, 4000);
+  }
+
+  public triggerManifestation(): void {
+    this.avatarService.triggerManifestation().subscribe(res => {
+        console.log(res);
+      },
+      err => {
+        console.error(err);
+      });
   }
 
 
@@ -125,7 +134,7 @@ export class MapComponent implements OnInit, OnDestroy {
         console.log(err);
       }
     });
-  };
+  }
 
   /**
    * Apply result of the java server notification to the view.
@@ -138,7 +147,7 @@ export class MapComponent implements OnInit, OnDestroy {
         this.displayTime(receivedMsg.message);
       }
     }
-  };
+  }
 
   display(x: number, y: number, avatar: any): boolean {
     if (avatar.x === x && avatar.y === y) {

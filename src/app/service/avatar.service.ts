@@ -25,4 +25,8 @@ export class AvatarService {
   startFireworks(): Observable<any> {
     return this.http.get<any>('http://localhost:8080/api/avatar/fireworks');
   }
+
+  triggerManifestation(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/avatar/triggerManifestation');
+  }
 }
