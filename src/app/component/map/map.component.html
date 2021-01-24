@@ -14,6 +14,11 @@
   <button (click)="clearManifestation()"> Clear All Manifestations</button>
 </div>
 
+<div>
+  <label >US-16: Jour/Nuit</label>
+  <button (click)="toggleDayNightMode()"> Toggle Day/Night mode</button>
+</div>
+
 <div *ngIf="mapResponse != null" style="width: 2250px">
   <span *ngFor="let tabSquare of mapResponse?.square; let y = index">
     <span *ngIf="tabSquare != null">

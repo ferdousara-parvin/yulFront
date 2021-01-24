@@ -29,6 +29,7 @@ export class AvatarService {
   triggerManifestation(): Observable<any> {
     return this.http.get<any>('http://localhost:8080/api/avatar/triggerManifestation');
   }
+
   clearManifestation(): Observable<any> {
     return this.http.get<any>('http://localhost:8080/api/avatar/clearManifestation');
   }
