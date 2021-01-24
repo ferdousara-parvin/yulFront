@@ -66,6 +66,30 @@ export class MapComponent implements OnInit, OnDestroy {
     );
   }
 
+  public toggleDayNightMode(): void {
+    if(this.mapResponse?.id === 1) {
+      this.mapService.getMapById('2').subscribe(map => {
+        this.mapResponse = map;
+        console.log(this.mapResponse);
+      },
+      error => {
+        this.mapResponse = undefined;
+        console.log(error.message);
+      }
+      );
+    }
+    else if (this.mapResponse?.id === 2) {
+      this.mapService.getMapById('1').subscribe(map => {
+        this.mapResponse = map;
+        console.log(this.mapResponse);
+      },
+      error => {
+        this.mapResponse = undefined;
+        console.log(error.message);
+      }
+      );
+    }
+  }
 
   public getFireworks(): void {
         this.avatarService.startFireworks(this.avatarList).subscribe(
