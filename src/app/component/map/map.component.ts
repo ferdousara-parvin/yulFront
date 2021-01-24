@@ -44,7 +44,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private getAllAvatars(): void {
-    this.avatarService.getAllAvatars().subscribe(
+    this.avatarService.getAllAvatarsButFireworks().subscribe(
       res => {
         this.avatarList = new Array();
         res.forEach(avatar => this.avatarList?.push(avatar));
@@ -68,75 +68,41 @@ export class MapComponent implements OnInit, OnDestroy {
 
 
   public getFireworks(): void {
-    this.avatarService.startFireworks().subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.error(err);
-      });
-
-    setTimeout(() => {
-      this.avatarService.startFireworks().subscribe(
+        this.avatarService.startFireworks(this.avatarList).subscribe(
         res => {
           console.log(res);
         },
         err => {
           console.error(err);
         });
-    }, 2000);
-    setTimeout(() => {
-      this.avatarService.startFireworks().subscribe(
+
+        setTimeout(() => {
+        this.avatarService.startFireworks(this.avatarList).subscribe(
         res => {
           console.log(res);
         },
         err => {
           console.error(err);
         });
-    }, 4000);
-  }
-
-  public triggerManifestation(): void {
-    this.avatarService.triggerManifestation().subscribe(res => {
-        console.log(res);
-      },
-      err => {
-        console.error(err);
-      });
-  }
-
-  public clearManifestation(): void {
-    this.avatarService.clearManifestation().subscribe(res => {
-        console.log(res);
-      },
-      err => {
-        console.error(err);
-      });
-  }
-
-  public toggleDayNightMode(): void {
-      if(this.mapResponse?.id === 1) {
-        this.mapService.getMapById('2').subscribe(map => {
-          this.mapResponse = map;
-          console.log(this.mapResponse);
+      }, 5000);
+        setTimeout(() => {
+        this.avatarService.startFireworks(this.avatarList).subscribe(
+        res => {
+          console.log(res);
         },
-        error => {
-          this.mapResponse = undefined;
-          console.log(error.message);
-        }
-        );
-      }
-      else if (this.mapResponse?.id === 2) {
-        this.mapService.getMapById('1').subscribe(map => {
-          this.mapResponse = map;
-          console.log(this.mapResponse);
+        err => {
+          console.error(err);
+        });
+      }, 10000);
+        setTimeout(() => {
+        this.avatarService.stopFireworks(this.avatarList).subscribe(
+        res => {
+          console.log(res);
         },
-        error => {
-          this.mapResponse = undefined;
-          console.log(error.message);
-        }
-        );
-      }
+        err => {
+          console.error(err);
+        });
+      }, 15000);
   }
 
 
