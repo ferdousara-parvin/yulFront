@@ -41,4 +41,12 @@ export class AvatarService {
   clearManifestation(): Observable<any> {
     return this.http.get<any>('http://localhost:8080/api/avatar/clearManifestation');
   }
+
+  determinePath(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/avatar/findPathToOnePoint');
+  }
+
+  nextMoveToOnePoint(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/avatar/nextMoveToOnePoint');
+  }
 }
