@@ -52,13 +52,6 @@ export class MapComponent implements OnInit, OnDestroy {
     );
   }
 
-  public moveAvatars(): void {
-    this.avatarService.moveListOfAvatars(this.avatarList).subscribe(
-      response => console.log(response),
-      error => console.error(error)
-    );
-  }
-
   public toggleDayNightMode(): void {
     this.mapService.getMapById(this.mapResponse?.id !== 1 ? '1' : '2').subscribe(
       map => this.mapResponse = map,
@@ -72,21 +65,21 @@ export class MapComponent implements OnInit, OnDestroy {
   public triggerManifestation(): void {
     this.avatarService.triggerManifestation().subscribe(
       response => console.log(response),
-      error => console.log(error)
+      error => console.log(error.message)
     );
   }
 
   public clearManifestation(): void {
     this.avatarService.clearManifestation().subscribe(
       response => console.log(response),
-      error => console.log(error)
+      error => console.log(error.message)
     );
   }
 
   public startAndStopFireworks(): void {
     this.avatarService.startFireworks(this.avatarList).subscribe(
       response => console.log(response),
-      error => console.error(error)
+      error => console.error(error.message)
     );
 
     this.callFireworksController(5000);
@@ -95,7 +88,7 @@ export class MapComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.avatarService.stopFireworks(this.avatarList).subscribe(
         response => console.log(response),
-        error => console.log(error)
+        error => console.log(error.message)
       );
     }, 15000);
   }
@@ -104,7 +97,7 @@ export class MapComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.avatarService.startFireworks(this.avatarList).subscribe(
         response => console.log(response),
-        error => console.log(error)
+        error => console.log(error.message)
       );
     }, time);
   }
@@ -172,23 +165,15 @@ export class MapComponent implements OnInit, OnDestroy {
 
   public determinePath(): void{
     this.avatarService.determinePath().subscribe(
-      res => {
-        console.log('moved');
-      },
-      err => {
-        console.error(err);
-      }
+      () => console.log('moved'),
+      error => console.error(error.message)
     );
   }
 
   public nextMove(): void{
     this.avatarService.nextMoveToOnePoint().subscribe(
-      res => {
-        console.log('moved');
-      },
-      err => {
-        console.error(err);
-      }
+      () => console.log('moved'),
+      error => console.error(error.message)
     );
   }
 }
