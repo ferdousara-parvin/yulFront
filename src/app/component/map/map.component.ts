@@ -60,7 +60,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   public toggleDayNightMode(): void {
-    this.mapService.getMapById(this.mapResponse?.id === 1 ? '1' : '2').subscribe(
+    this.mapService.getMapById(this.mapResponse?.id !== 1 ? '1' : '2').subscribe(
       map => this.mapResponse = map,
       error => {
         this.mapResponse = undefined;
