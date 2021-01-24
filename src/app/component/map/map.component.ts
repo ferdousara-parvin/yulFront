@@ -6,7 +6,6 @@ import {MapService} from '../../service/map.service';
 import {MapModel} from '../../../model/map';
 import {AvatarService} from 'src/app/service/avatar.service';
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -21,7 +20,7 @@ export class MapComponent implements OnInit, OnDestroy {
   mapResponse: MapModel | undefined;
 
   constructor(
-    private router: ActivatedRoute,
+    router: ActivatedRoute,
     private progressWebsocketService: ProgressWebsocketService,
     private mapService: MapService,
     private avatarService: AvatarService) {
@@ -45,90 +44,70 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private getAllAvatars(): void {
     this.avatarService.getAllAvatarsButFireworks().subscribe(
-      res => {
+      response => {
         this.avatarList = new Array();
-        res.forEach(avatar => this.avatarList?.push(avatar));
+        response.forEach(avatar => this.avatarList?.push(avatar));
       },
-      err => {
-        console.error(err);
-      }
+      error => console.log(error.message)
     );
   }
 
-  private moveAvators(): void {
+  public moveAvators(): void {
     this.avatarService.moveListOfAvatars(this.avatarList).subscribe(
-      res => {
-        console.log('moved');
-      },
-      err => {
-        console.error(err);
-      }
+      response => console.log(response),
+      error => console.error(error)
     );
   }
 
   public toggleDayNightMode(): void {
-    if(this.mapResponse?.id === 1) {
-      this.mapService.getMapById('2').subscribe(map => {
-        this.mapResponse = map;
-        console.log(this.mapResponse);
-      },
+    this.mapService.getMapById(this.mapResponse?.id === 1 ? '1' : '2').subscribe(
+      map => this.mapResponse = map,
       error => {
         this.mapResponse = undefined;
         console.log(error.message);
       }
-      );
-    }
-    else if (this.mapResponse?.id === 2) {
-      this.mapService.getMapById('1').subscribe(map => {
-        this.mapResponse = map;
-        console.log(this.mapResponse);
-      },
-      error => {
-        this.mapResponse = undefined;
-        console.log(error.message);
-      }
-      );
-    }
+    );
   }
 
-  public getFireworks(): void {
-        this.avatarService.startFireworks(this.avatarList).subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.error(err);
-        });
-
-        setTimeout(() => {
-        this.avatarService.startFireworks(this.avatarList).subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.error(err);
-        });
-      }, 5000);
-        setTimeout(() => {
-        this.avatarService.startFireworks(this.avatarList).subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.error(err);
-        });
-      }, 10000);
-        setTimeout(() => {
-        this.avatarService.stopFireworks(this.avatarList).subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.error(err);
-        });
-      }, 15000);
+  public triggerManifestation(): void {
+    this.avatarService.triggerManifestation().subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
   }
 
+  public clearManifestation(): void {
+    this.avatarService.clearManifestation().subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
+  }
+
+  public startAndStopFireworks(): void {
+    this.avatarService.startFireworks(this.avatarList).subscribe(
+      response => console.log(response),
+      error => console.error(error)
+    );
+
+    this.callFireworksController(5000);
+    this.callFireworksController(10000);
+
+    setTimeout(() => {
+      this.avatarService.stopFireworks(this.avatarList).subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+    }, 15000);
+  }
+
+  private callFireworksController(time: number): void {
+    setTimeout(() => {
+      this.avatarService.startFireworks(this.avatarList).subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+    }, time);
+  }
 
   ngOnDestroy(): void {
     this.obs.unsubscribe();
@@ -178,7 +157,6 @@ export class MapComponent implements OnInit, OnDestroy {
     }
     return '../assets/images/vide.png';
   }
-
 
   displayTime(second: number): void {
     const hours = Math.floor(second / 60 / 60);
