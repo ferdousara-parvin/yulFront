@@ -33,4 +33,12 @@ export class AvatarService {
   getAllAvatarsButFireworks(): Observable<Avatar[]> {
     return this.http.get<Avatar[]>('http://localhost:8080/api/avatar/get-all-avatars-but-fireworks');
   }
+
+  triggerManifestation(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/avatar/triggerManifestation');
+  }
+
+  clearManifestation(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/avatar/clearManifestation');
+  }
 }
