@@ -41,18 +41,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllAvatars();
-
-    setTimeout(() => {
-      this.moveAvators();
-    },2000);
-
-    setTimeout(() => {
-      this.moveAvators();
-    },4000);
-
-    setTimeout(() => {
-      this.moveAvators();
-    },6000);
   }
 
   private getAllAvatars(): void {
