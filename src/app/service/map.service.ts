@@ -17,5 +17,4 @@ export class MapService {
       map(l => l),
     );
   }
-
 }
