@@ -1,9 +1,17 @@
 
 <div>
   <label>Horloge : {{timer}}</label>
-  <button (click)="getFireworks()"> Fireworks</button>
-  <button (click)="triggerManifestation()"> Trigger Manifestation</button>
+</div>
 
+<div>
+  <label >US-25: Evenements inatendues</label>
+  <button (click)="getFireworks()"> Fireworks</button>
+</div>
+
+<div>
+  <label >US-8: Manifestation</label>
+  <button (click)="triggerManifestation()"> Trigger Manifestation</button>
+  <button (click)="clearManifestation()"> Clear All Manifestations</button>
 </div>
 
 <div *ngIf="mapResponse != null" style="width: 2250px">
