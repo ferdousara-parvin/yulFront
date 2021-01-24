@@ -169,4 +169,26 @@ export class MapComponent implements OnInit, OnDestroy {
     this.avatarList = (listAvatar as Avatar[]);
     console.log(this.avatarList);
   }
+
+  public determinePath(): void{
+    this.avatarService.determinePath().subscribe(
+      res => {
+        console.log('moved');
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
+
+  public nextMove(): void{
+    this.avatarService.nextMoveToOnePoint().subscribe(
+      res => {
+        console.log('moved');
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
 }
