@@ -17,7 +17,7 @@ export class MapComponent implements OnInit, OnDestroy {
   public title = 'Using WebSocket under Angular';
   private obs: any;
   public timer: string | undefined;
-  public avatarList: Avatar[] | undefined;
+  public avatarList!: Avatar[];
   mapResponse: MapModel | undefined;
 
   constructor(
