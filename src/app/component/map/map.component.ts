@@ -105,6 +105,15 @@ export class MapComponent implements OnInit, OnDestroy {
       });
   }
 
+  public clearManifestation(): void {
+    this.avatarService.clearManifestation().subscribe(res => {
+        console.log(res);
+      },
+      err => {
+        console.error(err);
+      });
+  }
+
 
   ngOnDestroy(): void {
     this.obs.unsubscribe();
