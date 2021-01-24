@@ -17,4 +17,8 @@ export class AvatarService {
   getAllAvatars(): Observable<Avatar[]> {
     return this.http.get<Avatar[]>('http://localhost:8080/api/avatar/');
   }
+
+  moveListOfAvatars(avatars: Avatar[]): Observable<any> {
+    return this.http.post<any>('http://localhost:8080/api/avatar/move-avatars', avatars);
+  }
 }

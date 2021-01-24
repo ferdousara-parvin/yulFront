@@ -55,6 +55,7 @@ export class MapComponent implements OnInit, OnDestroy {
       );
   }
 
+
   ngOnDestroy(): void {
     this.obs.unsubscribe();
   }
@@ -65,7 +66,6 @@ export class MapComponent implements OnInit, OnDestroy {
    */
   private initProgressWebSocket = () => {
     this.obs = this.progressWebsocketService.getObservable();
-
     this.obs.subscribe({
       next: this.onNewProgressMsg,
       error: (err: any) => {
