@@ -56,7 +56,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private getAllAvatars(): void {
-    this.avatarService.getAllAvatars().subscribe(
+    this.avatarService.getAllAvatarsButFireworks().subscribe(
       res => {
         this.avatarList = new Array();
         res.forEach(avatar => this.avatarList?.push(avatar));
@@ -80,7 +80,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
 
   public getFireworks(): void {
-        this.avatarService.startFireworks().subscribe(
+        this.avatarService.startFireworks(this.avatarList).subscribe(
         res => {
           console.log(res);
         },
@@ -89,7 +89,7 @@ export class MapComponent implements OnInit, OnDestroy {
         });
 
         setTimeout(() => {
-        this.avatarService.startFireworks().subscribe(
+        this.avatarService.startFireworks(this.avatarList).subscribe(
         res => {
           console.log(res);
         },
@@ -98,7 +98,7 @@ export class MapComponent implements OnInit, OnDestroy {
         });
       }, 5000);
         setTimeout(() => {
-        this.avatarService.startFireworks().subscribe(
+        this.avatarService.startFireworks(this.avatarList).subscribe(
         res => {
           console.log(res);
         },
@@ -106,6 +106,15 @@ export class MapComponent implements OnInit, OnDestroy {
           console.error(err);
         });
       }, 10000);
+        setTimeout(() => {
+        this.avatarService.stopFireworks(this.avatarList).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.error(err);
+        });
+      }, 15000);
   }
 
 
