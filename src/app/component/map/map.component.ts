@@ -79,6 +79,36 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
 
+  public getFireworks(): void {
+        this.avatarService.startFireworks().subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.error(err);
+        });
+
+        setTimeout(() => {
+        this.avatarService.startFireworks().subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.error(err);
+        });
+      }, 5000);
+        setTimeout(() => {
+        this.avatarService.startFireworks().subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.error(err);
+        });
+      }, 10000);
+  }
+
+
   ngOnDestroy(): void {
     this.obs.unsubscribe();
   }

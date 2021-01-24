@@ -10,7 +10,7 @@ export class AvatarService {
 
   constructor(private http: HttpClient) { }
 
-  getAvatarByType(id: number | null): Observable<Avatar[]> {
+  getAvatarsByType(id: number | null): Observable<Avatar[]> {
     return this.http.get<Avatar[]>('http://localhost:8080/api/avatar/type/' + id);
   }
 
@@ -20,5 +20,9 @@ export class AvatarService {
 
   moveListOfAvatars(avatars: Avatar[]): Observable<any> {
     return this.http.post<any>('http://localhost:8080/api/avatar/move-avatars', avatars);
+  }
+
+  startFireworks(): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/avatar/fireworks');
   }
 }
