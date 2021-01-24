@@ -52,7 +52,7 @@ export class MapComponent implements OnInit, OnDestroy {
     );
   }
 
-  public moveAvators(): void {
+  public moveAvatars(): void {
     this.avatarService.moveListOfAvatars(this.avatarList).subscribe(
       response => console.log(response),
       error => console.error(error)
