@@ -8,7 +8,8 @@ import {MapComponent} from './component/map/map.component';
 import {RxStompService} from '@stomp/ng2-stompjs';
 import {ProgressWebsocketService} from './service/progress.websocket.service';
 import {HttpClientModule} from '@angular/common/http';
-import { MainComponent } from './component/main/main.component';
+import {MainComponent} from './component/main/main.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { MainComponent } from './component/main/main.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [RxStompService, ProgressWebsocketService],
   bootstrap: [AppComponent]

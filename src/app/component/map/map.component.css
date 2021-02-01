@@ -26,3 +26,14 @@
 .spanLine{
   position: relative;
 }
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+button {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: #0a9edc;
+}
+
