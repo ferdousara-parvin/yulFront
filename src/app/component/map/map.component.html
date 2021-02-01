@@ -1,28 +1,18 @@
 
-<div>
+<div class="margin-left-10">
   <label>Horloge : {{timer}}</label>
 </div>
 
-<div>
-  <label>US-25: Evenements inatendues</label>
-  <button (click)="startAndStopFireworks()"> Fireworks</button>
+<div class="margin-left-10">
+  <button type="button" (click)="startAndStopFireworks()" class="btn btn-primary btn-sm">Fireworks</button>
+  <button type="button" (click)="triggerManifestation()" class="btn btn-primary btn-sm">Trigger Manifestation</button>
+  <button type="button" (click)="clearManifestation()" class="btn btn-primary btn-sm">Clear All Manifestations</button>
+  <button type="button" (click)="toggleDayNightMode()" class="btn btn-primary btn-sm">Toggle Day/Night mode</button>
 </div>
 
-<div>
-  <label >US-6: Move avatar to onepoint </label>
-  <button (click)="determinePath()"> Create path to OnePoint</button>
-  <button (click)="nextMove()"> Click here to move the avatar</button>
-</div>
-
-<div>
-  <label >US-8: Manifestation</label>
-  <button (click)="triggerManifestation()"> Trigger Manifestation</button>
-  <button (click)="clearManifestation()"> Clear All Manifestations</button>
-</div>
-
-<div>
-  <label>US-16: Jour/Nuit</label>
-  <button (click)="toggleDayNightMode()"> Toggle Day/Night mode</button>
+<div class="margin-left-10">
+  <button (click)="determinePath()" class="btn btn-primary btn-sm"> Create path to OnePoint</button>
+  <button (click)="nextMove()" class="btn btn-primary btn-sm"> Click here to move the avatar</button>
 </div>
 
 <div *ngIf="mapResponse != null" style="width: 2250px">
